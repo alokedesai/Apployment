@@ -1,3 +1,6 @@
+import sys, os
+os.environ['DJANGO_SETTINGS_MODULE'] = 'apployment.settings'
+from django.conf import settings
 from apployment_site.models import Skill
 
 # read in text file
