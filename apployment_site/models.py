@@ -15,7 +15,7 @@ class User(models.Model):
 	def __str__(self):
 		return "%s -%s -%s" % (self.username, user.first_name, user.last_name)
 
-class Ratings(models.Model):
+class Rating(models.Model):
 	rated = models.ForeignKey(User, related_name="rated")
 	rater = models.ForeignKey(User, related_name="rater")
 	rating = models.IntegerField()
