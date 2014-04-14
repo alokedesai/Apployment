@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Apployment | {% block title %} {% endblock %}</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'apployment_site/css/styles.css' %}">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,700' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+     <script src="http://stickyjs.com/jquery.sticky.js"></script>
+</head>
+<body>
+	<div class="menu">
+                    <a style="outline:none;" href="#"><img src="{% static 'apployment_site/images/newlogo.png' %}" height="50" ></a>
+                    <ul id="nav">
+                    <li ><a >HOW IT WORKS</a></li>
+                    <li ><a href="#">SEARCH</a></li>
+                    <li >
+                      <a href="#"><div class="login">LOGIN</div></a>
+
+                    </li>
+                    <li>
+                      <a class="si" href="#"> <div class="signup">GET STARTED</div></a>              
+                    </li>
+                    </ul>
+    </div>
+
+    <div class="content">
+    	{% block content %} {% endblock %}
+    </div>
+</body>
+</html>
