@@ -7,7 +7,7 @@ class User(models.Model):
 	school = models.CharField(max_length=200)
 	email = models.CharField(max_length=200)
 	password = models.CharField(max_length=200)
-	password_description = models.CharField(max_length=200)
+	description = models.CharField(max_length=200)
 	grad_year = models.CharField(max_length=200)
 	major = models.CharField(max_length=200)
 	# add file field for resume

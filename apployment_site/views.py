@@ -5,3 +5,6 @@ from django.shortcuts import render
 
 def index(request):
 	return render(request, "apployment_site/index.html")
+
+def signup(request):
+	return render(request, "apployment_site/signup.html")
