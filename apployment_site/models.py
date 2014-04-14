@@ -7,7 +7,7 @@ class User(models.Model):
 	school = models.CharField(max_length=200)
 	email = models.CharField(max_length=200)
 	password = models.CharField(max_length=200)
-	description = models.CharField(max_length=200)
+	description = models.CharField(max_length=200, null=True)
 	grad_year = models.CharField(max_length=200)
 	major = models.CharField(max_length=200)
 	# add file field for resume
@@ -37,7 +37,7 @@ class hasSkill(models.Model):
 class Experience(models.Model):
 	title = models.CharField(max_length=200)
 	company = models.CharField(max_length=200)
-	description = models.CharField(max_length=200)
+	description = models.CharField(max_length=200, null=True)
 
 	def __str__(self):
 		return "%s - %s" % (self.title, self.company)

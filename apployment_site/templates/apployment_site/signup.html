@@ -103,7 +103,6 @@
   <div id="fb-root"></div>
 
 
-<!-- <div class="fb-login-button" data-scope = "email, user_education_history" data-show-faces="true" data-width="200" data-max-rows="1">Start w/ Facebook</div> -->
 
 <div style="margin-left: 30%;">
 </br>
@@ -142,17 +141,7 @@
           <h2 style="margin-left: -120px;">Skills</h2>
       <span id="sk">
       <select data-placeholder="Skills" name="skills" style="width:350px;" class = "skills" id="skills" multiple>
-<!-- 	<option value></option>
-	<option>Java</option>
-	<option>JavaScript</option>
-	<option>C</option>
-	<option>C++</option>
-	<option>PHP</option>
-	<option>HTML</option>
-	<option>CSS</option>
-	<option>Ruby</option>
-	<option>Python</option>
-	<option>Objective C</option> -->
+
 
   {%for x in options%}
   <option>{{x.skill}}</option>
@@ -182,27 +171,13 @@
 
            <br/><br/>
           <!--  Experience 3 -->
-           <p><input class="form-login grayoutline green half" type=text  id="title1" name = "title3" placeholder="Job Title"></input>
+           <p><input class="form-login grayoutline green half" type=text  id="title1" name = "title3" placeholder="Job Title">
 
-          <input class="form-login grayoutline green half" type=text  id="company1" name = "company3" placeholder="Company"></input> <p>
+          <input class="form-login grayoutline green half" type=text  id="company1" name = "company3" placeholder="Company"> <p>
 
            <textarea  name="expDescription3" class="form-area" style="height: 90px; width: 400px" rows="3" maxlength = "200" placeholder="Description of Job." cols="20"></textarea> 
 
-               <!-- <p><input class="form-login grayoutline green half" type=text  id="title2" name = "title2" placeholder="Job Title"></input>
-
-          <input class="form-login grayoutline green half" type=text  id="company2" name = "company2" placeholder="Company"></input>
-
-            <input class="form-login grayoutline green half" style="font-family: 'roboto'; font-weight: 300; " type="date"  id="startdate2" name = "startdate2" placeholder="Start Date"></input> to 
-
-              <input class="form-login grayoutline green half" style="font-family: 'roboto'; font-weight: 300; " type="date"  id="enddate2" name = "enddate2" placeholder="End Date"></input>
-
-              <p><input class="form-login grayoutline green half" type=text  id="title3" name = "title3" placeholder="Job Title"></input>
-
-          <input class="form-login grayoutline green half" type=text  id="company3" name = "company3" placeholder="Company"></input>
-
-            <input class="form-login grayoutline green half" style="font-family: 'roboto'; font-weight: 300; " type="date"  id="startdate3" name = "startdate3" placeholder="Start Date"></input> to 
-
-              <input class="form-login grayoutline green half" style="font-family: 'roboto'; font-weight: 300; " type="date"  id="enddate3" name = "enddate3" placeholder="End Date"></input> --> <br/>
+       <br/>
              <span class ="signin-login green" id="upload" style="line-height:50px; text-align:center; width: 200; padding: 15px;"> Upload Resume:</span> Allowed extensions are .pdf, .doc, and .txt <p> <div id="filename"></div> <p> <input style="display:none" class = "file" type=file name=file>
   </div>
       <div style="text-align:center; margin-top: 15px;">
