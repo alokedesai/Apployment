@@ -1,12 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser
 
-class User(models.Model):
-	username = models.EmailField(max_length=200)
-	first_name = models.CharField(max_length=200)
-	last_name = models.CharField(max_length=200)
+class User(AbstractBaseUser):
+	# username, first_name, last_name, email, and password added through
+	# abstractbaseuser
 	school = models.CharField(max_length=200)
-	email = models.CharField(max_length=200)
-	password = models.CharField(max_length=200)
 	description = models.CharField(max_length=200, null=True)
 	grad_year = models.CharField(max_length=200)
 	major = models.CharField(max_length=200)
