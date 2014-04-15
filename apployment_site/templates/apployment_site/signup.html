@@ -109,7 +109,7 @@
 <div class="button btn-newBlue" style="height: 30px; width: 400px" id="facebook" onclick="fb()">Login with Facebook to validate your school</div></div> 
 <div id="error">{{error}}</div>
   
-  <form action=""  method=post id="signup" style="margin-left: 150px" enctype=multipart/form-data>
+  <form action=""  method=post id="signup" style="margin-left: 150px">{% csrf_token %}
       <h2>Bio</h2>
       <input  class="form-login grayoutline green" type="text" style="width: 198px;" id="name" name="firstName" placeholder="First Name">
       <input  class="form-login grayoutline green" type="text" style= "width: 198px;" id="lastname" name="lastName" placeholder="Last Name">

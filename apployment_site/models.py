@@ -13,7 +13,7 @@ class User(models.Model):
 	# add file field for resume
 
 	def __str__(self):
-		return "%s -%s -%s" % (self.username, user.first_name, user.last_name)
+		return "%s -%s -%s" % (self.username, self.first_name, self.last_name)
 
 class Rating(models.Model):
 	rated = models.ForeignKey(User, related_name="rated")
