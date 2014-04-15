@@ -37,3 +37,7 @@ def signup(request):
                 return HttpResponse("it worked!")
 
 	return render(request, "apployment_site/signup.html", {"options" : options})
+def signin(request):
+        if request.method == "POST":
+                username = request.POST.get("username").lower()
+                password = request.POST.get("password").lower()

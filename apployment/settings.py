@@ -48,6 +48,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = ('apps.apployment_site.auth.CustomAuth')
+
 ROOT_URLCONF = 'apployment.urls'
 
 WSGI_APPLICATION = 'apployment.wsgi.application'

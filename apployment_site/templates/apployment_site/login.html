@@ -1,0 +1,65 @@
+{% extends "apployment_site/base.html" %}
+{% block title %}Login {% endblock %}
+
+{% block content %}
+{% load staticfiles %}
+    <div class="page" style="height: 100%;">
+    <br/>
+    {% if error %}
+    <div id="errorContainer" style="display:inherit;">
+    
+    
+    <ul>
+    <li>{{ error }}</li>
+  </ul>
+</div>
+    {% else %}
+    <div id="errorContainer">
+    
+       
+    <ul />
+</div>
+{% endif %}
+    <div style="text-align:center; padding-top: 30px;">
+    <form id="login" action = "" method=post >
+      
+      <input type=text name="username" id="username" class="form-login grayoutline green"  placeholder="username">
+      <br /> <br />
+      <input type=password name="password" id="lock" class="form-login grayoutline green"  placeholder="Password"> <br /> <br />
+
+      <input type=submit value="Sign in" class="signin-login green">
+    </form>
+  </div>
+  </div>
+
+  <script>
+  $(document).ready(function () {
+
+    $('#login').validate({ // initialize the plugin
+        rules: {
+            username: {
+                required: true,
+                email: true
+                
+            },
+            password: {
+                required: true
+                
+            }
+        },
+       errorLabelContainer: "#messageBox",
+       errorClass: 'error',
+       messages: {
+        username: {
+         required: "Please enter your email address.",
+         email: "Please enter a valid email address."
+        },password: "Please enter your password."
+       },
+         errorContainer: $('#errorContainer'),
+    errorLabelContainer: $('#errorContainer ul'),
+    wrapper: 'li'
+    });
+
+});
+  </script>
+{% endblock %}
