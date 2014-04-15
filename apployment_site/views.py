@@ -28,7 +28,8 @@ def signup(request):
                 if User.objects.filter(username=theUser) or User.objects.filter(email=email):
                         return HttpResponse("Error!")
                 # create corresponding user, and skill objects
-                user = User(username=theUser, email = email, first_name=first_name, last_name=last_name, school=school,grad_year=year,major=major,password=password, description=description)                
+                user = User(username=theUser, email = email, first_name=first_name, last_name=last_name, school=school,grad_year=year,major=major, description=description)                
+                user.set_password(password)
                 user.save()
                 for s in skill:
                         y = hasSkill(user =user, skill=Skill.objects.filter(skill=s)[0])

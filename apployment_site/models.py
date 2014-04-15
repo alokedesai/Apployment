@@ -2,16 +2,21 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 
 class User(AbstractBaseUser):
-	# username, first_name, last_name, email, and password added through
-	# abstractbaseuser
+	username = models.EmailField(max_length=200)
+	first_name = models.CharField(max_length=200)
+ 	last_name = models.CharField(max_length=200)
+ 	email = models.CharField(max_length=200)
 	school = models.CharField(max_length=200)
 	description = models.CharField(max_length=200, null=True)
 	grad_year = models.CharField(max_length=200)
 	major = models.CharField(max_length=200)
 	# add file field for resume
 
+	# information necessary for extending abstractbaseuser
+	USERNAME_FIELD = "username"
+	REQUIRED_FIELDS=["email", "first_name", "last_name", "school", "grad_year"]
 	def __str__(self):
-		return "%s -%s -%s" % (self.username, self.first_name, self.last_name)
+		return "%s -%s -%s" % (self.username(), self.first_name, self.last_name)
 
 class Rating(models.Model):
 	rated = models.ForeignKey(User, related_name="rated")
