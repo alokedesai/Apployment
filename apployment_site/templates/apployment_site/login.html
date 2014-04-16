@@ -21,7 +21,7 @@
 </div>
 {% endif %}
     <div style="text-align:center; padding-top: 30px;">
-    <form id="login" action = "" method=post >
+    <form id="login" action = "" method=post >{% csrf_token %}
       
       <input type=text name="username" id="username" class="form-login grayoutline green"  placeholder="username">
       <br /> <br />
@@ -39,7 +39,6 @@
         rules: {
             username: {
                 required: true,
-                email: true
                 
             },
             password: {

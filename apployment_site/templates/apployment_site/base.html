@@ -13,13 +13,16 @@
 </head>
 <body>
 	<div class="menu">
-                    <a style="outline:none;" href="#"><img src="{% static 'apployment_site/images/newlogo.png' %}" height="50" ></a>
+                    <a style="outline:none;" href="{% url 'index' %}"><img src="{% static 'apployment_site/images/newlogo.png' %}" height="50" ></a>
                     <ul id="nav">
                     <li ><a >HOW IT WORKS</a></li>
                     <li ><a href="#">SEARCH</a></li>
                     <li >
-                      <a href="#"><div class="login">LOGIN</div></a>
-
+                      {% if user.is_anonymous %}
+                      <a href="login"><div class="login">LOGIN</div></a>
+                      {% else %}
+                       <a href="{% url 'django.contrib.auth.views.logout' %}"><div class="login">LOGOUT</div></a>
+                       {% endif %}
                     </li>
                     <li>
                       <a class="si" href="#"> <div class="signup">GET STARTED</div></a>              

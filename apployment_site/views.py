@@ -1,10 +1,10 @@
-from django.shortcuts import render
+
 from django.http import HttpResponse
 from django.template import RequestContext, loader
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from apployment_site.models import *
 from django.core.context_processors import csrf
-
+from django.contrib.auth import authenticate, login
 def index(request):
 	return render(request, "apployment_site/index.html")
 
@@ -41,3 +41,11 @@ def signin(request):
         if request.method == "POST":
                 username = request.POST.get("username").lower()
                 password = request.POST.get("password").lower()
+                user = authenticate(username = username, password=password)
+                if user:
+                        # login the user and redirect to homepage
+                        login(request, user)
+                        return redirect("/")
+
+        return render(request, "apployment_site/login.html")
+
