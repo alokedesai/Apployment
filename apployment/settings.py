@@ -48,7 +48,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-AUTHENTICATION_BACKENDS = ('apps.apployment_site.auth.CustomAuth')
+AUTHENTICATION_BACKENDS = ('apployment_site.auth.CustomAuth',)
 
 ROOT_URLCONF = 'apployment.urls'
 
