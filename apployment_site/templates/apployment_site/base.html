@@ -25,7 +25,11 @@
                        {% endif %}
                     </li>
                     <li>
-                      <a class="si" href="#"> <div class="signup">GET STARTED</div></a>              
+                      {% if user.is_anonymous %}
+                      <a class="si" href="{% url 'signup' %}"> <div class="signup">GET STARTED</div></a> 
+                      {% else %}
+                      <a class="si" href="#"> <div class="signup">PROFILE</div></a>
+                      {% endif %}             
                     </li>
                     </ul>
     </div>
