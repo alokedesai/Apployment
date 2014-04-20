@@ -6,19 +6,9 @@ class User(AbstractBaseUser):
 	first_name = models.CharField(max_length=200)
  	last_name = models.CharField(max_length=200)
  	email = models.CharField(max_length=200)
-	school = models.CharField(max_length=200)
 	description = models.CharField(max_length=200, null=True)
-	grad_year = models.CharField(max_length=200)
-	major = models.CharField(max_length=200)
 	role = models.CharField(max_length=200)
-	degree_highest = models.CharField(max_length=200)
-	company_name = models.CharField(max_length=200)
-	rank = models.IntegerField()
 	rating = models.IntegerField()
-	school_type = models.CharField(max_length=200)
-	gpa = models.IntegerField()
-	location = models.ForeignKey(Location, related_name="location")
-	company_position = models.CharField(max_length=200)
 	# add file field for resume
 
 	# information necessary for extending abstractbaseuser
@@ -33,14 +23,9 @@ class Role(models.Model):
 	company_name = models.CharField(max_length=200)
 	company_position = models.CharField(max_length=200)
 	school = models.CharField(max_length=200)
-	grad_year = models.CharField(max_length=200)
-	major = models.CharField(max_length=200)
 	degree_highest = models.CharField(max_length=200)
-	school_type = models.CharField(max_length=200)
 	gpa = models.IntegerField()
-	location = models.FOreignKey(Location, related_name="location")
-	rank = models.IntegerField()
-	degree = models.CharField(max_length=200)
+	grad_year = models.CharField(max_length=200)
 
 	def __str__(self):
 		return "%s - %s" % (self.username, self.role)
@@ -51,8 +36,6 @@ class School(models.Model):
 	location = models.ForeignKey(Location, related_name="location")
 	degree_highest = models.CharField(max_length=200)
 	major = models.CharField(max_length=200)
-	grad_year = models.CharField(max_length=200)
-	degree = models.CharField(max_length=200)
 
 	def __str__(self):
 		return "%s" % (self.school)
@@ -96,8 +79,6 @@ class Reviews(models.Model):
 	rater = models.ForeignKey(User, related_name="rater")
 	text = models.CharField(max_length=200)	
 	stars = models.IntegerField()
-	rater_role = models.CharField(max_length=200)	
-	rated_role = models.CharField(max_length=200)	
 
 	def __str__(self):
 		return "rated: %s , rater: %s, rating: %s" % (self.rated.username, self.rater.username, str(self.stars))
