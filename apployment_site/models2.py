@@ -27,6 +27,64 @@ class User(AbstractBaseUser):
 	def __str__(self):
 		return "%s -%s -%s" % (self.username(), self.first_name, self.last_name)
 
+class Role(models.Model):
+	username = models.CharField(max_length=200)
+	role = models.CharField(max_length=200)
+	company_name = models.CharField(max_length=200)
+	company_position = models.CharField(max_length=200)
+	school = models.CharField(max_length=200)
+	grad_year = models.CharField(max_length=200)
+	major = models.CharField(max_length=200)
+	degree_highest = models.CharField(max_length=200)
+	school_type = models.CharField(max_length=200)
+	gpa = models.IntegerField()
+	location = models.FOreignKey(Location, related_name="location")
+	rank = models.IntegerField()
+	degree = models.CharField(max_length=200)
+
+	def __str__(self):
+		return "%s - %s" % (self.username, self.role)
+	
+class School(models.Model):
+	school = models.CharField(max_length=200)
+	school_type = models.CharField(max_length=200)
+	location = models.ForeignKey(Location, related_name="location")
+	degree_highest = models.CharField(max_length=200)
+	major = models.CharField(max_length=200)
+	grad_year = models.CharField(max_length=200)
+	degree = models.CharField(max_length=200)
+
+	def __str__(self):
+		return "%s" % (self.school)
+
+class Rank(models.Model):
+	gpa = models.IntegerField()
+	grad_year = models.CharField(max_length=200)
+	rank = models.IntegerField()
+	
+	def __str__(self):
+		return "%s - %s" % (self.gpa,self.grad_year)
+
+class SType(models.Model):
+	school_type = models.CharField(max_length=200)
+	degree = models.CharField(max_length=200)
+
+	def __str__(self):
+		return "%s" % (self.school_type)
+
+class Rater(models.Model):
+	rater = models.ForeignKey(User, related_name="rater")
+	rater_role = models.CharField(max_length=200)
+	
+	def __str__(self):
+		return "%s" %(self.rater())
+
+class Rated(models.Model):
+	rated = models.ForeignKey(User, related_name="rated")
+	rated_role = models.CharField(max_length=200)
+
+	def __str__(self):
+		return "%s" %(self.rated())
 
 class Location(models.Model):
 	city = models.CharField(max_length=200)
