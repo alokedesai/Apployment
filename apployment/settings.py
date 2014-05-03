@@ -51,10 +51,8 @@ MIDDLEWARE_CLASSES = (
 AUTHENTICATION_BACKENDS = ('apployment_site.auth.CustomAuth',)
 
 ROOT_URLCONF = 'apployment.urls'
-
 WSGI_APPLICATION = 'apployment.wsgi.application'
-
-
+LOGIN_URL = '/login/'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 

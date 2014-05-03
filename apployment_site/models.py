@@ -18,13 +18,15 @@ class User(AbstractBaseUser):
 	def __str__(self):
 		return "%s -%s -%s" % (self.username(), self.first_name, self.last_name)
 
-class Rating(models.Model):
+class Review(models.Model):
 	rated = models.ForeignKey(User, related_name="rated")
 	rater = models.ForeignKey(User, related_name="rater")
-	rating = models.IntegerField()
+	text = models.TextField()
+	stars = models.IntegerField()
 
 	def __str__(self):
 		return "rated: %s , rater: %s, rating: %s" % (self.rated.username, self.rater.username, str(self.rating))
+
 class Skill(models.Model):
 	skill = models.CharField(max_length=200)
 

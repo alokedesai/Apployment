@@ -5,6 +5,11 @@ from django.shortcuts import render, redirect
 from apployment_site.models import *
 from django.core.context_processors import csrf
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+
+import urllib, hashlib
+
+
 def index(request):
 	return render(request, "apployment_site/index.html")
 
@@ -48,4 +53,13 @@ def signin(request):
                         return redirect("/")
 
         return render(request, "apployment_site/login.html")
+@login_required
+def profile(request):
+        
+        # gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(user.email.lower()).hexdigest()
+        #     # gravatar_url += urllib.urlencode({'default':default, 's':str(size)})
+        # gravatar_url += "?" + "s=" + str(size) +"&" + "d=" + "mm"
+        skills = hasSkill.objects.filter(user__username=user.username)
+        return render(request, "apployment_site/profile.html", {"skills" : skills})
+
 

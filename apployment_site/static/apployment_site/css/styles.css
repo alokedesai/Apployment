@@ -490,3 +490,24 @@ background-color: #16A085;
 #message:focus{
 	outline: none;
 }
+.pf-1{
+	font-size: 30px;
+	font-weight: 600;
+}
+.pf-2{
+	padding-left: 15px;
+}
+.pf-description{
+	margin-top: .3em;
+}
+.pf-skills{
+	margin-top: .3em;
+}
+.pf-skills #title{
+	font-weight: 600;
+}
+.pf-skills .label{
+	background-color: #3969AB;
+	color: white;
+	
+}
