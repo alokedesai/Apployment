@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 
 import urllib, hashlib
 
-
 def index(request):
 	return render(request, "apployment_site/index.html")
 
@@ -29,6 +28,11 @@ def signup(request):
                 password = request.POST.get("password")
                 description = request.POST.get("description")
 
+                # Experience attributes
+                title = request.POST.get("title1")
+                company = request.POST.get("company1")
+                description = request.POST.get("expDescription1")
+
                 # make sure no user exists with this username or email
                 if User.objects.filter(username=theUser) or User.objects.filter(email=email):
                         return HttpResponse("Error!")
@@ -39,7 +43,10 @@ def signup(request):
                 for s in skill:
                         y = hasSkill(user =user, skill=Skill.objects.filter(skill=s)[0])
                         y.save()
-                return HttpResponse("it worked!")
+                user= authenticate(username=username, password=password)
+                login(request, user)
+                return redirect("/")
+               
 
 	return render(request, "apployment_site/signup.html", {"options" : options})
 def signin(request):
@@ -55,11 +62,23 @@ def signin(request):
         return render(request, "apployment_site/login.html")
 @login_required
 def profile(request):
-        
-        # gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(user.email.lower()).hexdigest()
-        #     # gravatar_url += urllib.urlencode({'default':default, 's':str(size)})
-        # gravatar_url += "?" + "s=" + str(size) +"&" + "d=" + "mm"
-        skills = hasSkill.objects.filter(user__username=user.username)
-        return render(request, "apployment_site/profile.html", {"skills" : skills})
+        skills = hasSkill.objects.filter(user__username=request.user.username)
+        rating = Review.objects.filter(rated__username=request.user.username)
+        stars = None
+        if rating:
+                stars = rating.stars
+        return render(request, "apployment_site/profile.html", {"skills" : skills, "stars":stars})
 
+def search(request):
+        if request.method == "POST":
+                # get the school
+                school = request.POST.get("school")
+                skills = request.POST.getlist('skills')
+                
+                # really complex query, think of how to simplify!
+                result = hasSkills.objects.filter(user__school_contains=school)
+                fresult = result.filter(skill__skill__in=skills)
+
+        skills = Skill.objects.all()
+        return render(request, "apployment_site/search.html", {"skills" : skills})
 

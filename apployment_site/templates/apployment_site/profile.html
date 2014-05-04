@@ -17,10 +17,10 @@
 			<div class="row">
 				<div class="col-md-3 centered">
 			<!-- profile picture image -->
-					<img src="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200">
+					<img class="img-responsive" style="display:inline;" src="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=150">
 				</div>
 			<div class="col-md-8">
-				<div height="200" style="background-color: white">
+				<div  style="height: 150px; background-color: white">
 					<div class="container">
 						<span class="pf-1">{{user.first_name}} {{user.last_name}}</span>
 						<span class="pf-2">
@@ -29,10 +29,21 @@
 						<div class="pf-description">
 							{{user.description}}
 						</div>
+						<div class="pf-rating">
+							<span id="title">Rating:</span>
+							{% if stars %} 
+								{% for star in stars %}
+									<span class="glyphicon glyphicon-star"></span>
+								{% endfor %}
+							{% else %}
+							{{user.first_name}} hasn't been rated yet
+							{% endif %}
+
+						</div>
 						<div class="pf-skills">
 							<span id="title">Skills:</span> 
 							{% for skill in skills %} 
-							{{x.skill.skill}}
+								<span class="label">{{skill.skill}}</span>
 							{% endfor %}
 						</div>
 					</div>

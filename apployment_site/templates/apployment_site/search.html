@@ -1,0 +1,30 @@
+{% extends "apployment_site/base.html" %}
+{% block title %}Search {% endblock %}
+{% load staticfiles %}
+{% block content %}
+
+	<div class="page" style="height: 100%">
+  
+	  <form action=""  method="POST" style="margin-top: -25px; text-align:center;">{% csrf_token %}
+	      <h2>Search for a Developer</h2>
+	      <span style="padding-right: 5px;">
+	      	<input class="form-login grayoutline green" type="text" style="width: 198px;" id="name" name="school" placeholder="School">
+	      </span>
+	      
+	     <span id="sk">
+	       <select data-placeholder="Skills" name="skills" style="width:350px;" class = "skills" id="skills" multiple>
+				{%for x in skills%}
+				<option>{{x.skill}}</option>
+				{% endfor %}
+      		</select>
+      	</span> 
+      	<br>
+      	<br>
+      		<input class ="signin-login green" type=submit value="Search">
+	   </form>
+    </div>
+<script type="text/javascript">
+	$('.skills').chosen();
+</script>
+    
+{% endblock %}

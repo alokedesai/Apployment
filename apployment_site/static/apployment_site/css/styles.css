@@ -220,7 +220,7 @@ margin-top: 40px;
   transition: 0.35s;
 }
 .form-login {
-	height: 50px;
+	height: 56px;
 	width: 400px;
 	-webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -500,14 +500,17 @@ background-color: #16A085;
 .pf-description{
 	margin-top: .3em;
 }
-.pf-skills{
-	margin-top: .3em;
+.pf-rating, .pf-skills{
+	margin-top: .8em;
 }
-.pf-skills #title{
+.pf-skills{
+	margin-bottom: .8em;
+}
+.pf-skills #title, .pf-rating #title{
 	font-weight: 600;
 }
 .pf-skills .label{
 	background-color: #3969AB;
 	color: white;
-	
+	font-weight: 400;
 }

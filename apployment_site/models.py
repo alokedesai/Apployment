@@ -10,6 +10,7 @@ class User(AbstractBaseUser):
 	description = models.CharField(max_length=200, null=True)
 	grad_year = models.CharField(max_length=200)
 	major = models.CharField(max_length=200)
+	# resume = models.FileField(blank=True, null=True)
 	# add file field for resume
 
 	# information necessary for extending abstractbaseuser
