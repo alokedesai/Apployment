@@ -22,6 +22,9 @@
       	<br>
       		<input class ="signin-login green" type=submit value="Search">
 	   </form>
+	   {% for user in result %}
+	   {{user.username}}
+	   {% endfor %}
     </div>
 <script type="text/javascript">
 	$('.skills').chosen();

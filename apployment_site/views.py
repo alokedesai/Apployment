@@ -76,8 +76,17 @@ def search(request):
                 skills = request.POST.getlist('skills')
                 
                 # really complex query, think of how to simplify!
-                result = hasSkills.objects.filter(user__school_contains=school)
-                fresult = result.filter(skill__skill__in=skills)
+                school = hasSkill.objects.filter(user__school__contains=school)
+                skill = school.filter(skill__skill__in=skills).values("user").distinct()
+
+                result = []
+
+                for developer in skill:
+                        result.append(User.objects.get(id=developer["user"]))
+
+                return render(request, "apployment_site/search.html", {"skills" : skills, "result": result})
+
+
 
         skills = Skill.objects.all()
         return render(request, "apployment_site/search.html", {"skills" : skills})
