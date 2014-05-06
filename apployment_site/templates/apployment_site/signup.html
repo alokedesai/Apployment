@@ -16,7 +16,7 @@
 </div> 
 <div id="error">{{error}}</div>
   
-  <form action=""  method=post id="signup" style="margin-left: 150px">{% csrf_token %}
+  <form action=""  method=post id="signup" style="margin-left: 150px" enctype="multipart/form-data">{% csrf_token %}
       <h2>Bio</h2>
       <input  class="form-login grayoutline green" type="text" style="width: 198px;" id="name" name="firstName" placeholder="First Name">
       <input  class="form-login grayoutline green" type="text" style= "width: 198px;" id="lastname" name="lastName" placeholder="Last Name">
@@ -40,7 +40,7 @@
         <h2>School</h2>
           <p><input class="form-login grayoutline green" type=text  id="school" name = "school" placeholder="University/College"></input>
           <p><input class="form-login grayoutline green half" type=text  id="year" name = "year" placeholder="Graduation Year"></input>
-            <input class="form-login grayoutline green half" type=text  id="major" name = "major" placeholder="Major"></input>
+            <input class="form-login grayoutline green half" type=text  id="major" name = "major" placeholder="Major">
             </div>
 
 
@@ -68,7 +68,7 @@
            <textarea  name="expDescription1" class="form-area" style="height: 90px; width: 400px" rows="3" maxlength = "200" placeholder="Description of Job." cols="20"></textarea> 
 
        <br/>
-             <span class ="signin-login green" id="upload" style="line-height:50px; text-align:center; width: 200; padding: 15px;"> Upload Resume:</span> Allowed extensions are .pdf, .doc, and .txt <p> <div id="filename"></div> <p> <input style="display:none" class = "file" type=file name=file>
+             <span class ="signin-login green" id="upload" style="line-height:50px; text-align:center; width: 200; padding: 15px;"> Upload Resume:</span> Allowed extensions are .pdf, .doc, and .txt <p> <div id="filename"></div> <p> <input style="display:none" class = "file" type=file name="file">
   </div>
       <div style="text-align:center; margin-top: 15px;">
       <input class ="signin-login green" type=submit value="Create entry">

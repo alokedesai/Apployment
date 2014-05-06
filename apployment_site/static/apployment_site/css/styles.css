@@ -287,6 +287,10 @@ background-color: #E67E22;
 
 }
 
+.signin-login.blue {
+background-color: #E67E22;
+
+}
 .signin-login.orange:active, .signin-login.orange:focus  {
 	background-color: #D35400;
 	outline: none;

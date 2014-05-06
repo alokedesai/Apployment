@@ -13,11 +13,11 @@
 </head>
 <body style="background-color:#F1F2F2">
 	<div class="container">
-		<div class="column">
+
 			<div class="row">
 				<div class="col-md-3 centered">
 			<!-- profile picture image -->
-					<img class="img-responsive" style="display:inline;" src="http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=150">
+					<img class="img-responsive" style="display:inline;" src="{{image}}">
 				</div>
 			<div class="col-md-8">
 				<div  style="height: 150px; background-color: white">
@@ -50,8 +50,42 @@
 					
 				</div>
 			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<h2>Experience</h2>
+				<h4>{{exp.title}}- {{exp.company}}</h4>
+				{{exp.description}}
 			</div>
-	</div>
+			<div class="col-md-6">
+				{% if user.resume %}
+				<h2>Resume</h2>
+				<a href="{{user.resume.url}}"><button class ="signin-login green" style="width: 150px;"> View Resume </button></a>
+
+				{% endif %}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				
+				<h2>Reviews</h2> {% if notcurrent %} Rate this user {% endif %}
+
+
+			</div>
+		</div>
+		{% if notcurrent %}
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Contact</h2>
+				
+				<a href="mailto:{{user.email}}"><button class ="signin-login green" style="width: 150px;"> Email This User </button> </a>
+				
+			</div>
+		</div>
+		{% endif %}
+
 </div>	
 </body>
 </html>

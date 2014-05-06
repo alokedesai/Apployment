@@ -10,4 +10,5 @@ urlpatterns = [
 	url(r'^profile/', views.profile, name="profile"),
 	url(r'^search/', views.search, name="search"),
 	url(r'^user/(?P<username>\w+)', views.user, name="user"),
+	url(r'^rate/(?P<rated>\w+)', views.rate, name="rate"),
 ]

@@ -10,7 +10,7 @@ class User(AbstractBaseUser):
 	description = models.CharField(max_length=200, null=True)
 	grad_year = models.CharField(max_length=200)
 	major = models.CharField(max_length=200)
-	# resume = models.FileField(blank=True, null=True)
+	resume = models.FileField(blank=True, null=True)
 	# add file field for resume
 
 	# information necessary for extending abstractbaseuser
@@ -26,7 +26,7 @@ class Review(models.Model):
 	stars = models.IntegerField()
 
 	def __str__(self):
-		return "rated: %s , rater: %s, rating: %s" % (self.rated.username, self.rater.username, str(self.rating))
+		return "rated: %s , rater: %s, stars: %s" % (self.rated.username, self.rater.username, str(self.stars))
 
 class Skill(models.Model):
 	skill = models.CharField(max_length=200)
