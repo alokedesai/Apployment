@@ -3,110 +3,17 @@
 {% block title %}Signup{% endblock %}
 
 {% block content %}
-<script>
-    $(function() {
-      
-
-    });
-
-    function company() {
-       $("#email").show();
-      $("#password").show();
-      $("#school").val("company");
-      $("#name").show();
-      $("#user").show();
-      $("#type").val("company");
-    }
-    
-    function developer() {
-       $("#facebook").show();
-       $("#type").val("developer");
-
-    }
-
-     
-    function college(arg) {
-
-      if (arg.length > 0) {
-        for (var i = 0; i < arg.length; i++) {
-        if (arg[i]["type"] == "College") {
-          return arg[i]["school"]["name"];
-          }
-        }
-      }
-      return "no";
-    }
-    var appId = '1374555416100192';
-    var siteRoot = '';
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : appId,
-      channelURL : '///channel.html', // Channel File
-      status     : true,
-      cookie     : true,
-      oauth      : true,
-      xfbml      : true
-    });
-    
-  };
-
-
-  (function(d){
-     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1&appId=" + appId;
-     d.getElementsByTagName('head')[0].appendChild(js);
-   }(document));
-
-  
-
-    function fb(){
-        //some code that requires the FB object
-        //such as...
-
-         FB.login(function(response) {
-   if (response.authResponse) {
-     FB.api('/me', function(fbUser) {
-      
-      $("#school").show();
-       $("#email").show();
-      $("#password").show();
-      $("#sk").show();
-      $("#name").show();
-      $("#user").show();
-      $("#facebook").remove();
-       $("#name").val(fbUser["first_name"]);
-       $("#lastname").val(fbUser["last_name"]);
-       $("#email").val(fbUser["email"]);
-                  if (college(fbUser["education"]) != "no") {
-                    $("#school").val(college(fbUser["education"]));
-                    $("#school").prop("readonly", true);}
-                  else {
-                    $("#error").text("You don't have school your school info in facebook. Please add it to your Facebook or login using LinkedIn");
-                  }
-                  
-                  
-                  
-       
-     });
-   } else {
-     $("#error").text('User cancelled login or did not fully authorize.');
-   }
- }, {scope:'email,user_education_history'});;
-  }
 
 
    
 </script>
           <div class="page" style="height: 330px;">
-  <div id="fb-root"></div>
 
 
 
 <div style="margin-left: 30%;">
 </br>
-<div class="button btn-newBlue" style="height: 30px; width: 400px" id="facebook" onclick="fb()">Login with Facebook to validate your school</div></div> 
+</div> 
 <div id="error">{{error}}</div>
   
   <form action=""  method=post id="signup" style="margin-left: 150px">{% csrf_token %}

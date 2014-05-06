@@ -1,4 +1,3 @@
-
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.shortcuts import render, redirect
@@ -80,14 +79,24 @@ def search(request):
                 skill = school.filter(skill__skill__in=skills).values("user").distinct()
 
                 result = []
-
                 for developer in skill:
                         result.append(User.objects.get(id=developer["user"]))
 
                 return render(request, "apployment_site/search.html", {"skills" : skills, "result": result})
-
-
-
         skills = Skill.objects.all()
         return render(request, "apployment_site/search.html", {"skills" : skills})
+def user(request, username):
+        user = User.objects.filter(username=username)
+        if not user:
+                return HttpResponse("404")
+        user = user[0]
+        skills = hasSkill.objects.filter(user__username=user.username)
+        rating = Review.objects.filter(rated__username=user.username)
+        stars = None
+        if rating:
+                stars = rating.stars
+        # gravatar URL
+        gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(user.email.lower()).hexdigest()
+        gravatar_url += "?" + "s=" + str(size) +"&" + "d=" + "mm"
+        return render(request, "apployment_site/profile.html", {"skills" : skills, "stars":stars, "user" : user})
 

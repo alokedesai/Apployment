@@ -16,10 +16,10 @@
                     <a style="outline:none;" href="{% url 'index' %}"><img src="{% static 'apployment_site/images/newlogo.png' %}" height="50" ></a>
                     <ul id="nav">
                     <li ><a >HOW IT WORKS</a></li>
-                    <li ><a href="#">SEARCH</a></li>
+                    <li ><a href="{% url 'search' %}">SEARCH</a></li>
                     <li >
                       {% if user.is_anonymous %}
-                      <a href="login"><div class="login">LOGIN</div></a>
+                      <a href="{% url 'login' %}"><div class="login">LOGIN</div></a>
                       {% else %}
                        <a href="{% url 'django.contrib.auth.views.logout' %}"><div class="login">LOGOUT</div></a>
                        {% endif %}
@@ -28,7 +28,7 @@
                       {% if user.is_anonymous %}
                       <a class="si" href="{% url 'signup' %}"> <div class="signup">GET STARTED</div></a> 
                       {% else %}
-                      <a class="si" href="#"> <div class="signup">PROFILE</div></a>
+                      <a class="si" href="{% url 'profile' %}"> <div class="signup">PROFILE</div></a>
                       {% endif %}             
                     </li>
                     </ul>

@@ -22,9 +22,16 @@
       	<br>
       		<input class ="signin-login green" type=submit value="Search">
 	   </form>
-	   {% for user in result %}
-	   {{user.username}}
-	   {% endfor %}
+
+	   <div class="content" style="text-align:center; margin-top: 50px;">
+	   	{% if result %}
+	   		<h2>Results</h2>
+			{% for user in result %}
+		   {{user.first_name}} {{user.last_name}}, {{user.school}}, <a href="{% url 'user' user.username %}">View Profile</a>
+		   {% endfor %}
+		{% endif %}
+	   </div>
+	   
     </div>
 <script type="text/javascript">
 	$('.skills').chosen();
