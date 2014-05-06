@@ -27,7 +27,7 @@
 	   	{% if result %}
 	   		<h2>Results</h2>
 			{% for user in result %}
-		   {{user.first_name}} {{user.last_name}}, {{user.school}}, <a href="{% url 'user' user.username %}">View Profile</a>
+		   <div>{{user.first_name}} {{user.last_name}}, {{user.school}}, <a href="{% url 'user' user.username %}">View Profile</a></div>
 		   {% endfor %}
 		{% endif %}
 	   </div>

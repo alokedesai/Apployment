@@ -72,9 +72,12 @@ def signin(request):
 def profile(request):
         skills = hasSkill.objects.filter(user__username=request.user.username)
         rating = Review.objects.filter(rated__username=request.user.username)
-        stars = None
+        stars = 0
         if rating:
-                stars = rating.stars
+                for item in rating:
+                        stars += item.stars
+                stars = stars/len(rating)
+        stars = range(0, stars)
         gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(request.user.email.lower()).hexdigest()
         gravatar_url += "?" + "s=150" +"&" + "d=" + "mm"
 
@@ -90,10 +93,15 @@ def search(request):
                 
                 # really complex query, think of how to simplify!
                 school = hasSkill.objects.filter(user__school__contains=school)
-                skill = school.filter(skill__skill__in=skills).values("user").distinct()
-
+                skill = None
+                if skills:
+                        skill = school.filter(skill__skill__in=skills).values("user").distinct()
+                else:
+                        skill = school.values("user").distinct()
+                print skill
                 result = []
                 for developer in skill:
+
                         result.append(User.objects.get(id=developer["user"]))
 
                 return render(request, "apployment_site/search.html", {"skills" : skills, "result": result})
@@ -107,18 +115,24 @@ def user(request, username):
         skills = hasSkill.objects.filter(user__username=user.username)
         rating = Review.objects.filter(rated__username=user.username)
 
-        stars = None
+        stars = 0
         if rating:
-                stars = rating[0].stars
+                for item in rating:
+                        stars += item.stars
+                stars = stars/len(rating)
+        stars = range(0, stars)
         # gravatar URL
         gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(user.email.lower()).hexdigest()
         gravatar_url += "?" + "s=150" +"&" + "d=" + "mm"
+         # return the first experience 
+        exp = hasExperience.objects.filter(user__username=user.username)[0]
+        print exp
         notcurrent = (request.user != user)
-        return render(request, "apployment_site/profile.html", {"skills" : skills, "stars":stars, "user" : user, "image" : gravatar_url, "notcurrent" : notcurrent})
+        return render(request, "apployment_site/profile.html", {"skills" : skills, "stars":stars, "user" : user, "image" : gravatar_url, "notcurrent" : notcurrent, "exp": exp.experience})
 @login_required
 def rate(request, rated):
         rated= User.objects.filter(username = rated)
-        if not rated or request.user.username == rated[0]:
+        if not rated or request.user.username == rated[0].username:
                 return HttpResponse("404")
         rated = rated[0]
 
