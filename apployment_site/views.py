@@ -29,9 +29,15 @@ def signup(request):
                     gpa = float(gpa)
                 except:
                     return HttpResponse("GPA must be a number!")
+	    	try:
+	    	    rank = int(year) - gpa
+		except:
+		    rank = 3000 
                 school_location = request.POST.get("school_location")
                 school_type = request.POST.get("school_type")
                 major = request.POST.get("major")
+		wage = 3040 - rank + ord(major[0])
+		wage = wage % 40 + 10
                 password = request.POST.get("password")
                 description = request.POST.get("description")
                 # resume = request.FILES["file"]
@@ -49,7 +55,7 @@ def signup(request):
                 if User.objects.filter(username=theUser) or User.objects.filter(email=email):
                         return HttpResponse("Error!")
                 # create corresponding user, and skill objects
-                user = User(username=theUser, email = email, first_name=first_name, last_name=last_name, school=school,grad_year=year,major=major, description=description, resume=resume, gpa=gpa, school_location=school_location, school_type=school_type)                
+                user = User(username=theUser, wage = wage, rank = rank, email = email, first_name=first_name, last_name=last_name, school=school,grad_year=year,major=major, description=description, resume=resume, gpa=gpa, school_location=school_location, school_type=school_type)                
                 user.set_password(password)
                 user.save()
                 for s in skill:

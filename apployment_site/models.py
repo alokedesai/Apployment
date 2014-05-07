@@ -16,6 +16,7 @@ class User(AbstractBaseUser):
 	gpa = models.FloatField(blank=True, null=True)
 	stars = models.IntegerField(blank = True, null=True)
 	wage = models.IntegerField(blank=True, null=True)
+	rank = models.IntegerField(blank=True, null=True)
 
 	# information necessary for extending abstractbaseuser
 	USERNAME_FIELD = "username"
