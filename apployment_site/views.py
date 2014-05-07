@@ -117,6 +117,7 @@ def search(request):
                 for developer in skill:
 
                         result.append(User.objects.get(id=developer["user"]))
+		result = sorted(result,key=lambda k: k.rank)
 
                 return render(request, "apployment_site/search.html", {"skills" : skills, "result": result})
         skills = Skill.objects.all()
