@@ -98,7 +98,7 @@ def profile(request):
 
         # return the first experience 
         exp = hasExperience.objects.filter(user__username=request.user.username)[0]
-        return render(request, "apployment_site/profile.html", {"skills" : skills, "stars":stars, "image": gravatar_url, "exp" : exp.experience})
+        return render(request, "apployment_site/profile.html", {"skills" : skills, "stars":stars, "image": gravatar_url, "exp" : exp})
 
 def search(request):
         if request.method == "POST":
@@ -106,7 +106,6 @@ def search(request):
                 school = request.POST.get("school")
                 skills = request.POST.getlist('skills')
                 
-                # really complex query, think of how to simplify!
                 school = hasSkill.objects.filter(user__school__contains=school)
                 skill = None
                 if skills:
@@ -143,10 +142,10 @@ def user(request, username):
         exp = hasExperience.objects.filter(user__username=user.username)[0]
         print exp
         notcurrent = (request.user != user)
-        return render(request, "apployment_site/profile.html", {"skills" : skills, "stars":stars, "user" : user, "image" : gravatar_url, "notcurrent" : notcurrent, "exp": exp.experience})
+        return render(request, "apployment_site/profile.html", {"skills" : skills, "stars":stars, "user" : user, "image" : gravatar_url, "notcurrent" : notcurrent, "exp": exp})
 @login_required
 def rate(request, rated):
-        rated= User.objects.filter(username = rated)
+        rated = User.objects.filter(username = rated)
         if not rated or request.user.username == rated[0].username:
                 return HttpResponse("404")
         rated = rated[0]

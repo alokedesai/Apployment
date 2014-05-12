@@ -56,7 +56,9 @@
 			<div class="col-md-6">
 				<h2>Experience</h2>
 				<h4>{{exp.title}}- {{exp.company}}</h4>
-				{{exp.description}}
+				{% if exp.description %}
+					{{exp.description}}
+				{% endif %}
 			</div>
 			<div class="col-md-6">
 				{% if user.resume %}
