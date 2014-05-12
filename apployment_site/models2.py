@@ -9,6 +9,7 @@ class User(AbstractBaseUser):
 	description = models.CharField(max_length=200, null=True)
 	role = models.CharField(max_length=200)
 	rating = models.IntegerField()
+	rank = models.
 	# add file field for resume
 
 	# information necessary for extending abstractbaseuser

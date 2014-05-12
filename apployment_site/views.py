@@ -24,11 +24,22 @@ def signup(request):
                 last_name = request.POST.get("lastName")
                 school = request.POST.get("school")
                 year = request.POST.get("year")
+                gpa = request.POST.get("gpa")
+                try:
+                    gpa = float(gpa)
+                except:
+                    return HttpResponse("GPA must be a number!")
+                school_location = request.POST.get("school_location")
+                school_type = request.POST.get("school_type")
                 major = request.POST.get("major")
                 password = request.POST.get("password")
                 description = request.POST.get("description")
-                resume = request.FILES["file"]
-
+                # resume = request.FILES["file"]
+                # if not resume:
+                resume = None
+                if "file" in request.FILES:
+                    resume = request.FILES["file"]
+                # resume = None
                 # Experience attributes
                 title = request.POST.get("title1")
                 company = request.POST.get("company1")
@@ -38,18 +49,16 @@ def signup(request):
                 if User.objects.filter(username=theUser) or User.objects.filter(email=email):
                         return HttpResponse("Error!")
                 # create corresponding user, and skill objects
-                user = User(username=theUser, email = email, first_name=first_name, last_name=last_name, school=school,grad_year=year,major=major, description=description, resume=resume)                
+                user = User(username=theUser, email = email, first_name=first_name, last_name=last_name, school=school,grad_year=year,major=major, description=description, resume=resume, gpa=gpa, school_location=school_location, school_type=school_type)                
                 user.set_password(password)
                 user.save()
                 for s in skill:
                         y = hasSkill(user =user, skill=Skill.objects.filter(skill=s)[0])
                         y.save()
                 # create the experience
-                E = Experience(title=title, company=company, description=co_description)
+                E = hasExperience(user=user, title=title, company=company, description=co_description)
                 E.save()
 
-                y = hasExperience(user=user, experience=E)
-                y.save()
 
                 user= authenticate(username=theUser, password=password)
                 login(request, user)

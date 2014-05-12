@@ -26,21 +26,27 @@
 
     <div style="margin-left: 150px;">
       <h2 style="margin-left: -120px;">User Info</h2>
-    <p><input class="form-login grayoutline green" type=text  id="username" name = "username" placeholder="Username"></input> <p>
+    <p><input class="form-login grayoutline green" type=text  id="username" name = "username" placeholder="Username"/> <p>
       <input class="form-login grayoutline green" type="password"  id="password" name = "password" placeholder="Password"> <p>
     <textarea  name="description" class="form-area" rows="5" maxlength = "200" placeholder="Profile description (Companies will be able to see this)." cols="50"></textarea>    
 
     </div>
     
       
-      <input type="hidden" name = "type" id="type"></input>
+      <input type="hidden" name = "type" id="type"/>
       
 
-      <div class="page2" style="height: 250px;">
+      <div class="page2" style="height: 375px;">
         <h2>School</h2>
-          <p><input class="form-login grayoutline green" type=text  id="school" name = "school" placeholder="University/College"></input>
-          <p><input class="form-login grayoutline green half" type=text  id="year" name = "year" placeholder="Graduation Year"></input>
-            <input class="form-login grayoutline green half" type=text  id="major" name = "major" placeholder="Major">
+          <p><input class="form-login grayoutline green" type=text  id="school" name = "school" placeholder="University/College"/>
+          <p><input class="form-login grayoutline green half" type=text  id="year" name = "year" placeholder="Graduation Year"/>
+            <input class="form-login grayoutline green half" type=text  id="major" name = "major" placeholder="Major"> <br><br>
+           
+            <input class="form-login grayoutline green half" type=text  id="gpa" name ="gpa" placeholder="GPA"> 
+
+            <input class="form-login grayoutline green half" type=text  id="school_type" name ="school_type" placeholder="School Type"> <br> <br>
+
+            <input class="form-login grayoutline green" type=text  id="school_location" name ="school_location" placeholder="School Location">
             </div>
 
 
@@ -68,7 +74,7 @@
            <textarea  name="expDescription1" class="form-area" style="height: 90px; width: 400px" rows="3" maxlength = "200" placeholder="Description of Job." cols="20"></textarea> 
 
        <br/>
-             <span class ="signin-login green" id="upload" style="line-height:50px; text-align:center; width: 200; padding: 15px;"> Upload Resume:</span> Allowed extensions are .pdf, .doc, and .txt <p> <div id="filename"></div> <p> <input style="display:none" class = "file" type=file name="file">
+             <span class ="signin-login green" id="upload" style="line-height:50px; text-align:center; width: 200; padding: 15px;"> Upload Resume:</span> Allowed extensions are .pdf, .doc, and .txt <p> <div id="filename"></div> <p> <input style="display:none" class="file" type="file" name="file">
   </div>
       <div style="text-align:center; margin-top: 15px;">
       <input class ="signin-login green" type=submit value="Create entry">
@@ -85,6 +91,7 @@ $('input[type=file]').bind('change', function() {
 }).change();
 
 	$('.skills').chosen();
+  $('.gpa').chosen();
 
       </script>
   </form>
