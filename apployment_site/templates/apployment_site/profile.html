@@ -73,10 +73,10 @@
 			<div class="col-md-12">
 				
 				<h2>Reviews</h2> {% if notcurrent %}<a href="/rate/{{user.username}}"> Rate this user </a>{% endif %}
-			               {% for rating in ratings %}
+			               {% for ratin in rating %}
 			               <div>
-				          <strong>{{rating.rater}}</strong> - {%for star in rating.stars%}<span class="glyphicon glyphicon-star"></span>{%endfor%} <br>
-			             {{rating.text}}
+				          <strong>{{ratin.rater}}</strong> - {%for star in ratin.stars%}<span class="glyphicon glyphicon-star"></span>{%endfor%} <br>
+			             {{ratin.text}}
 		           </div>
               {% endfor %}			   
 
