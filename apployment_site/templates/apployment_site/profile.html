@@ -72,8 +72,13 @@
 		<div class="row">
 			<div class="col-md-12">
 				
-				<h2>Reviews</h2> {% if notcurrent %} Rate this user {% endif %}
-
+				<h2>Reviews</h2> {% if notcurrent %}<a href="/rate/{{user.username}}"> Rate this user </a>{% endif %}
+			               {% for rating in ratings %}
+			               <div>
+				          <strong>{{rating.rater}}</strong> - {%for star in rating.stars%}<span class="glyphicon glyphicon-star"></span>{%endfor%} <br>
+			             {{rating.text}}
+		           </div>
+              {% endfor %}			   
 
 			</div>
 		</div>

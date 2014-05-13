@@ -95,10 +95,13 @@ def profile(request):
         stars = range(0, stars)
         gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(request.user.email.lower()).hexdigest()
         gravatar_url += "?" + "s=150" +"&" + "d=" + "mm"
+	
+	for r in rating:
+		r.stars = range(0,r.stars)
 
         # return the first experience 
         exp = hasExperience.objects.filter(user__username=request.user.username)[0]
-        return render(request, "apployment_site/profile.html", {"skills" : skills, "stars":stars, "image": gravatar_url, "exp" : exp})
+	return render(request, "apployment_site/profile.html", {"skills" : skills, "stars":stars, "image": gravatar_url, "exp" : exp,"rating" : rating})
 
 def search(request):
         if request.method == "POST":
